@@ -443,6 +443,7 @@ async function main() {
     const code = await a.textContent('#onShow');
     await b.click('[data-act=online]'); await b.fill('#nameOn', 'Ben'); await b.fill('#onCode', code); await b.click('#onJoin');
     await a.waitForSelector('#game.on'); await b.waitForSelector('#game.on');
+    ok(await a.evaluate(() => (window.UTTT_ICE_SERVERS || []).some((x) => /^turns?:/.test([].concat(x.urls)[0]) && x.username && x.credential)), 'a TURN relay is configured');
     const xHost = await a.evaluate(() => UTTT.Game.cfg.xSeat === 0);
     const [first, second] = xHost ? [a, b] : [b, a];
     await cell(second, 4, 4);                                  // not their turn

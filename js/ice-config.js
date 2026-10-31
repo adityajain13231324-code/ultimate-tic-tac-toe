@@ -1,10 +1,11 @@
-/* Optional: your own TURN relay, for reliable online play between different networks (mobile data, strict Wi-Fi).
-   Leave the list empty to use only the built-in free servers. To add one (free tiers exist at metered.ca and Cloudflare Calls):
-   create an account, copy the TURN host, username and credential, and replace the list below, for example:
-
-   window.UTTT_ICE_SERVERS = [
-     { urls: ['turn:YOUR-HOST:80', 'turn:YOUR-HOST:443?transport=tcp', 'turns:YOUR-HOST:443?transport=tcp'], username: 'YOUR-USERNAME', credential: 'YOUR-CREDENTIAL' },
-   ];
-
-   These values are visible to every visitor (that is normal for browser WebRTC), so use a free-tier account, not a paid one. */
-window.UTTT_ICE_SERVERS = [];
+/* Your own TURN relay (Metered, free tier), for online play between different networks (mobile data, strict Wi-Fi).
+   These are appended to the built-in servers in net.js. The values are visible to every visitor, which is normal for
+   browser WebRTC, so keep this a free-tier account. To change or remove them, edit this list (an empty list uses only the built-in servers).
+   Where to get new ones: Metered dashboard -> TURN Server -> Credentials. */
+window.UTTT_ICE_SERVERS = [
+  { urls: 'stun:stun.relay.metered.ca:80' },
+  { urls: 'turn:global.relay.metered.ca:80', username: '612531e5b42d61b85581deeb', credential: 'VvQ78DKovIzQWOny' },
+  { urls: 'turn:global.relay.metered.ca:80?transport=tcp', username: '612531e5b42d61b85581deeb', credential: 'VvQ78DKovIzQWOny' },
+  { urls: 'turn:global.relay.metered.ca:443', username: '612531e5b42d61b85581deeb', credential: 'VvQ78DKovIzQWOny' },
+  { urls: 'turns:global.relay.metered.ca:443?transport=tcp', username: '612531e5b42d61b85581deeb', credential: 'VvQ78DKovIzQWOny' },
+];
